@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN" window-icon="views/img/128x128.ico" window-frame="none">
+<head>
+    <meta charset="gb2312">
+    <title>消息</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            background: #FFFFFF;
+        }
+
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+            padding: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px
+        }
+
+        div {
+            display: block;
+            margin: 0;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.72222;
+            margin: 0 0 15px;
+        }
+
+        .nav-bar {
+            background-color: #6a94d4;
+            border-width: 0;
+            font-size: 16px;
+            min-height: 32px;
+            border: none;
+            list-style: none;
+            right: 0;
+            left: 0;
+        }
+
+        .nav-bar-nav {
+            margin: 0;
+            float: left;
+            display: block;
+            list-style: none;
+        }
+
+        .nav-bar-nav-right {
+            /*margin-right: -21px;*/
+            float: right;
+        }
+
+        .nav-bar > li {
+            position: relative;
+            display: block;
+            float: left;
+        }
+
+        .nav-bar .font {
+            font-size: 24px;
+            line-height: 1;
+            height: 53px;
+            font-weight: 700;
+            padding: 14px 21px;
+        }
+
+        .btn-danger {
+            color: #ffffff;
+            background-color: #e74c3c;
+            border-color: #d43f3a;
+        }
+
+        .container {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+
+            /*overflow: scroll;*/
+        }
+
+        .col-12 {
+            width: 100%;
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-left: 0;
+            margin-bottom: 20px;
+            background-color: transparent;
+            border: 1px solid #ddd;
+            display: table;
+            border-collapse: separate;
+        }
+
+        .table th {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd
+        }
+
+        .table td{
+            margin:0;
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="nav-bar">
+    <div class="container">
+        <ul class="nav-bar-nav">
+            <li><span class="font">信息提示</span></li>
+        </ul>
+        <ul class="nav-bar-nav nav-bar-nav-right">
+            <li>
+                <div class="btn btn-danger" id="hidewin" style="margin-right:20px ">X</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container" id="container">
+    <div class="row">
+        <table class="table" id="table">
+            <tr>
+                <th>标题</th>
+                <th>类型</th>
+                <th>信息</th>
+                <th>时间</th>
+                <!--<th>-->
+                    <!--&lt;!&ndash;<button class="hidewin" id="hidewin">隐藏</button>&ndash;&gt;-->
+                <!--</th>-->
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/tiscript">
+
+    var origin = $(#table).html;
+    $(#hidewin).on("click",function(){
+        $(#table).html =  origin;
+        view.state = View.WINDOW_HIDDEN;
+    })
+    var cnt = 10;
+    $(#container).timer(1000, function() {
+        if(cnt > 6){
+            //view.state=View.WINDOW_HIDDEN;
+        }
+        if(cnt == 0) {
+            var res = view.Shown();
+            cnt = 5;
+
+            if (res != "") {
+                $(#table).html += res;
+                //var el = new Element(res)
+
+                //$(#table).$append($el);
+
+                view.state = View.WINDOW_SHOWN;
+            }
+
+            //view.state = View.WINDOW_HIDDEN;
+        }
+        cnt--;
+        return true;
+    });
+</script>
+</body>
+</html>

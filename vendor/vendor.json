@@ -1,0 +1,103 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "6TttwiGd0SYNT/fFW5BisyYFw8Y=",
+			"path": "github.com/StackExchange/wmi",
+			"revision": "ea383cf3ba6ec950874b8486cd72356d007c768f",
+			"revisionTime": "2017-04-10T19:29:09Z"
+		},
+		{
+			"checksumSHA1": "njoT+7VOWz2g/DIb5QqQdtQhMPE=",
+			"path": "github.com/go-ole/go-ole",
+			"revision": "085abb85892dc1949567b726dff00fa226c60c45",
+			"revisionTime": "2017-07-12T17:44:59Z"
+		},
+		{
+			"checksumSHA1": "ZVU97szYFPntB5QbpSBfd5Bbgcc=",
+			"path": "github.com/go-ole/go-ole/oleutil",
+			"revision": "085abb85892dc1949567b726dff00fa226c60c45",
+			"revisionTime": "2017-07-12T17:44:59Z"
+		},
+		{
+			"checksumSHA1": "PKhMy2gXcej+SuEpNVXcWx3kPkA=",
+			"path": "github.com/go-vgo/robotgo",
+			"revision": "ea0b910646730a33386f53ccaa80fc2345ae5b93",
+			"revisionTime": "2017-09-14T15:02:43Z"
+		},
+		{
+			"checksumSHA1": "zzsvJuS2/3A42pH6llri/VeLmyU=",
+			"path": "github.com/go-vgo/robotgo/clipboard",
+			"revision": "ea0b910646730a33386f53ccaa80fc2345ae5b93",
+			"revisionTime": "2017-09-14T15:02:43Z"
+		},
+		{
+			"checksumSHA1": "y8ipUdhAJ7LbsWpHnKuLzbmvIEI=",
+			"path": "github.com/lxn/walk",
+			"revision": "000d16cc4931f5bdb4aad4df4e51182ac6d615be",
+			"revisionTime": "2017-09-12T11:37:02Z"
+		},
+		{
+			"checksumSHA1": "g+uRPc2mgX/VKn5qC2X3tisUfpA=",
+			"path": "github.com/lxn/walk/declarative",
+			"revision": "000d16cc4931f5bdb4aad4df4e51182ac6d615be",
+			"revisionTime": "2017-09-12T11:37:02Z"
+		},
+		{
+			"checksumSHA1": "XfY+HHRWIKayWdMvqE8GIEWhVs8=",
+			"path": "github.com/sciter-sdk/go-sciter",
+			"revision": "b89464628412e54e6c3d4554e04ee7d799987f9a",
+			"revisionTime": "2017-08-21T17:09:12Z"
+		},
+		{
+			"checksumSHA1": "SBM+APsQIbuRba1QDQ9TxCja7fM=",
+			"path": "github.com/shirou/gopsutil/cpu",
+			"revision": "084e5f47b47ee4dce70b1cafa83c13027e9e9483",
+			"revisionTime": "2017-09-12T23:06:34Z"
+		},
+		{
+			"checksumSHA1": "uSlBUQ/YsEbtbaQDDFVOJbjzo9g=",
+			"path": "github.com/shirou/gopsutil/host",
+			"revision": "084e5f47b47ee4dce70b1cafa83c13027e9e9483",
+			"revisionTime": "2017-09-12T23:06:34Z"
+		},
+		{
+			"checksumSHA1": "gIK1dcmeglKK1kDWefNy/F6Gfjk=",
+			"path": "github.com/shirou/gopsutil/internal/common",
+			"revision": "084e5f47b47ee4dce70b1cafa83c13027e9e9483",
+			"revisionTime": "2017-09-12T23:06:34Z"
+		},
+		{
+			"checksumSHA1": "eNrvFnMil0X8d9GMOrH8Ycf5CU0=",
+			"path": "github.com/shirou/gopsutil/mem",
+			"revision": "084e5f47b47ee4dce70b1cafa83c13027e9e9483",
+			"revisionTime": "2017-09-12T23:06:34Z"
+		},
+		{
+			"checksumSHA1": "HMmwXPHKoLteCKDQ7R27ZnsMMf8=",
+			"path": "github.com/shirou/gopsutil/net",
+			"revision": "084e5f47b47ee4dce70b1cafa83c13027e9e9483",
+			"revisionTime": "2017-09-12T23:06:34Z"
+		},
+		{
+			"checksumSHA1": "P5RfFkIFQeaE/oltIH0t3OvPEF4=",
+			"path": "github.com/shirou/gopsutil/process",
+			"revision": "084e5f47b47ee4dce70b1cafa83c13027e9e9483",
+			"revisionTime": "2017-09-12T23:06:34Z"
+		},
+		{
+			"checksumSHA1": "K+Z5DS27MEqKqgUXEaiCYA5WajM=",
+			"path": "github.com/shirou/w32",
+			"revision": "bb4de0191aa41b5507caa14b0650cdbddcd9280b",
+			"revisionTime": "2016-09-30T03:27:40Z"
+		},
+		{
+			"checksumSHA1": "7EZyXN0EmZLgGxZxK01IJua4c8o=",
+			"path": "golang.org/x/net/websocket",
+			"revision": "8351a756f30f1297fe94bbf4b767ec589c6ea6d0",
+			"revisionTime": "2017-09-15T01:39:56Z"
+		}
+	],
+	"rootPath": "com/ectongs/preplanui"
+}

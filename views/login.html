@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN" window-icon="views/img/128x128.ico">
+<head>
+    <meta charset="gb2312">
+    <title>登录</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            background: #FFFFFF;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            /*background: url("views/img/dialog_bg.png") no-repeat;*/
+        }
+
+        .container .header {
+            width: 100%;
+            height: 20%;
+            background: #6a94d4;
+        }
+
+        .container .header .blank {
+            width: 100%;
+            /*height: 20%;*/
+            /*background: #AABBCC;*/
+        }
+
+        .container .middle {
+            padding: 0;
+            width: 100%;
+            height: 50%;
+            background: #6a94d4;
+        }
+
+        .container .middle .layout {
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+            width: 100%;
+            /*background: #BBDDAA;*/
+            float: left;
+        }
+
+        .container .footer {
+            width: 100%;
+            height: 20%;
+            /*background: #BBDDAA;*/
+        }
+
+        .container .footer .button-area {
+            margin-left: auto;
+            margin-right: auto;
+            float: left;
+            padding: 0;
+            width: 100%;
+            /*height: 100%;*/
+            /*position: fixed;*/
+            /*background-color: #FFAAFF;*/
+        }
+
+        h1 {
+            font-family: inherit;
+            font-weight: 700;
+            line-height: 1.1;
+            color: inherit;
+            text-align: center;
+        }
+
+        span {
+            font-family: inherit;
+            font-weight: 300;
+            line-height: 1.1;
+            color: inherit;
+        }
+
+        .input-group {
+            margin-bottom: 8px;
+            margin-left: auto;
+            margin-right: auto;
+            /*position: relative;*/
+            width: 100%;
+            /*display: table;*/
+            border-collapse: separate;
+            /*background: #DDCCCA;*/
+        }
+
+        .form-control {
+            /*float: left;*/
+            display: block;
+            height: 12px;
+            padding: 8px 12px;
+            font-family: Lato, Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1;
+            color: #34495e;
+            border: 2px solid #CCC;
+            border-radius: 6px;
+            box-shadow: none;
+            transition: border .25s linear, color .25s linear, background-color .25s linear;
+        }
+
+        .input-addon {
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1;
+            padding: 10px 12px;
+            font-size: 12px;
+            color: #fff;
+            text-align: center;
+            background-color: #437dd4;
+            border: 2px solid #EFFFFF;
+            border-radius: 6px;
+            transition: border .25s linear, color .25s linear, background-color .25s linear;
+            display: table-cell
+        }
+
+        .btn-blank-1 {
+            /*position: relative;*/
+            /*top: 400px;*/
+            margin-left: 20%;
+            /*text-align: right;*/
+        }
+        .btn-blank-2 {
+            /*position: relative;*/
+            /*top: 400px;*/
+            float: right;
+            margin-right: 20%;
+            /*text-align: right;*/
+        }
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            color: #FFFFFF;
+            border: 1px solid transparent;
+            border-radius: 4px
+        }
+
+        .btn-wide {
+            min-width: 72px;
+            min-height: 24px;
+            padding-right: 24px;
+            padding-left: 24px;
+            padding-top: 12px;
+        }
+
+        .btn-danger {
+            color: #ffffff;
+            background-color: #6a94d4;
+            border-color: #9a94d4;
+        }
+
+        .btn-danger:hover {
+            color: #ffffff;
+            background-color: #6a94d4;
+            border-color: #9a94d4;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="blank"></div>
+        <div class="title">
+            <h1>应急指挥通信系统</h1>
+        </div>
+        <div class="blank"></div>
+    </div>
+    <div class="middle">
+        <div class="blank"></div>
+        <div class="layout">
+            <div class="input-group">
+                <span class="input-addon">用户名:<input class="form-control" type="text" id="username"></span>
+            </div>
+            <div class="input-group">
+                <span class="input-addon">密码:<input class="form-control" type="password" id="password"></span>
+            </div>
+        </div>
+        <div class="blank"></div>
+    </div>
+    <div class="footer">
+        <div class="button-area">
+            <button class="btn btn-danger btn-wide btn-blank-1" id="canclebtn">关闭</button>
+            <button class="btn btn-danger btn-wide btn-blank-2" id="loginbtn">登录</button>
+        </div>
+        <div class="button-area">
+
+        </div>
+    </div>
+</div>
+<script type="text/tiscript">
+$(#canclebtn).on("click", function() {
+    //关闭
+    view.close();
+});
+
+$(#loginbtn).on("click",function(){
+    var username = $(#username).value
+    var password = $(#password).value
+    if (username == "" || username == undefined) {
+        view.msgbox(#alert,"用户名不能为空")
+        return 0;
+    }
+    
+    if (password == "" || password == undefined) {
+        view.msgbox(#alert,"密码不能为空")
+        return 0;
+    }
+    if (view.login(username,password) == 1) {
+        view.msgbox(#information,"登录成功")
+        view.close()
+    }else{
+        view.msgbox(#information,"用户名或密码不正确")
+    }
+});
+
+
+
+</script>
+</body>
+</html>
