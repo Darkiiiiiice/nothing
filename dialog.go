@@ -7,11 +7,12 @@ import (
 	"com/ectongs/preplanui/mq"
 	"regexp"
 	"com/ectongs/preplanui/gui"
+	"com/ectongs/preplanui/conf"
 )
 
 const (
-	Width  = 500
-	Height = 400
+	Width  = 600
+	Height = 600
 
 	CHECKED   = 0x40000060
 	UNCHECKED = 0x40000000
@@ -82,25 +83,66 @@ func elementHandlers(root *sciter.Element) {
 			}
 		}
 
+		var phoneType string
+		var serverAddr string
+		var inner string
+		var outter string
+		var pr string
+
+		//设置电话类型
+		if val == nil {
+			phoneType = conf.PhoneType()
+		} else {
+			phoneType = val.String()
+		}
+
+		//设置服务器地址
 		sval, err := root.MustSelectById("server").GetValue()
 		if err != nil {
 			fmt.Println("setElementHandlers.root.MustSelectById:", err.Error())
 		}
-		teleno, err := root.MustSelectById("teleno").GetValue()
+		if ok, err := regexp.MatchString("[a-zA-z]+://[^\\s]*", sval.String()); err != nil || !ok {
+			utils.MsgBoxWithWarning(nil, "请输入正确的服务器地址")
+			serverAddr = conf.ServerAddress()
+		} else {
+			serverAddr = sval.String()
+		}
+
+		//设置市内电话区号
+		inner_teleno, err := root.MustSelectById("inner_teleno").GetValue()
 		if err != nil {
 			fmt.Println("setElementHandlers.root.MustSelectById:", err.Error())
 		}
-
-		if val == nil {
-			utils.MsgBoxWithWarning(nil, "请选择电话类型")
-		} else if ok, err := regexp.MatchString("[a-zA-z]+://[^\\s]*", sval.String()); err != nil || !ok {
-			utils.MsgBoxWithWarning(nil, "请输入正确的服务器地址")
+		if str := inner_teleno.String(); str == "" {
+			inner = conf.InnerTeleNo()
 		} else {
-			//通知配置监听器，修改配置
-			conf := fmt.Sprintf("%s(|=|)%s(|=|)%s", val.String(), sval.String(), teleno.String())
-			fmt.Println(conf)
-			mq.NotifyConf(conf)
-			utils.MsgBoxWithWarning(nil, "保存成功")
+			inner = str
 		}
+
+		//设置市外电话区号
+		outter_teleno, err := root.MustSelectById("outter_teleno").GetValue()
+		if err != nil {
+			fmt.Println("setElementHandlers.root.MustSelectById:", err.Error())
+		}
+		if str := outter_teleno.String(); str == "" {
+			outter = conf.OutterTeleNo()
+		} else {
+			outter = str
+		}
+
+		//设置当前城市
+		province, err := root.MustSelectById("province").GetValue()
+		if err != nil {
+			fmt.Println("setElementHandlers.root.MustSelectById:", err.Error())
+		}
+		if str := province.String(); str == "" {
+			pr = conf.Province()
+		} else {
+			pr = str
+		}
+
+		conf := fmt.Sprintf("%s(|=|)%s(|=|)%s(|=|)%s(|=|)%s", phoneType, serverAddr, inner, outter, pr)
+		fmt.Println(conf)
+		mq.NotifyConf(conf)
 	})
 }

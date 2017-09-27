@@ -11,6 +11,7 @@ import (
 	"com/ectongs/preplanui/app"
 	"com/ectongs/preplanui/consts"
 	"com/ectongs/preplanui/conf"
+	"github.com/xluohome/phonedata"
 )
 
 const (
@@ -105,7 +106,17 @@ func OnWebSocket(ws *websocket.Conn) {
 					fmt.Println("电话未连接")
 					ResponseFailed(ws, errors.New("正在录音中"), req.Method)
 				} else {
-					command := fmt.Sprintf("%s:%s%s", req.Command, conf.TeleNo(), req.PhoneNumber)
+					pr, err := phonedata.Find(req.PhoneNumber)
+					if err != nil {
+						fmt.Println("OnWebSocket.phonedata.Find:", err.Error())
+						continue
+					}
+					var command string
+					if pr != nil && pr.Province == conf.Province() {
+						command = fmt.Sprintf("%s:%s%s", req.Command, conf.InnerTeleNo(), req.PhoneNumber)
+					} else {
+						command = fmt.Sprintf("%s:%s%s", req.Command, conf.OutterTeleNo(), req.PhoneNumber)
+					}
 					fmt.Println("接收到命令", command)
 					mq.NotifyCommand(command)
 					ResponseSuccess(ws, "", req.Method)

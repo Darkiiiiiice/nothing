@@ -13,7 +13,9 @@ import (
 type Config struct {
 	PhoneType      string
 	ServerAddress  string
-	TeleNo         string
+	InnerTeleNo    string
+	OutterTeleNo   string
+	Province           string
 	SessionId      string
 	LoginUser      string
 	RecordFilePath string
@@ -24,7 +26,9 @@ var conf *Config
 func init() {
 	conf = new(Config)
 	conf.PhoneType = consts.HION_U860
-	conf.TeleNo = "100"
+	conf.Province = "河南"
+	conf.InnerTeleNo = "10"
+	conf.OutterTeleNo = "100"
 	conf.RecordFilePath = "./"
 	conf.ServerAddress = consts.SERVER_ADDR + consts.SERVER_URL
 }
@@ -64,12 +68,18 @@ func SessionId() string {
 	return conf.SessionId
 }
 
-func SetTeleNo(id string) {
-	conf.SessionId = id
+func InnerTeleNo() string {
+	return conf.InnerTeleNo
 }
-func TeleNo() string {
-	return conf.SessionId
+
+func OutterTeleNo() string {
+	return conf.OutterTeleNo
 }
+
+func Province() string {
+	return conf.Province
+}
+
 
 //让程序需的新配置生效
 func ConfUpdate() {
@@ -82,5 +92,5 @@ func ConfUpdate() {
 }
 
 func PrintAll() {
-	fmt.Printf(" PhoneType:%s ServerAddress:%s TeleNo:%s RecordFilePath:%s LoginUser:%s SessionId:%s\n", conf.PhoneType, conf.ServerAddress, conf.TeleNo, conf.RecordFilePath, conf.LoginUser, conf.SessionId)
+	fmt.Printf(" PhoneType:%s ServerAddress:%s InnerTeleNo:%s OutterTeleNo:%s :%s RecordFilePath:%s LoginUser:%s SessionId:%s\n", conf.PhoneType, conf.ServerAddress, conf.InnerTeleNo, conf.OutterTeleNo, conf.Province, conf.RecordFilePath, conf.LoginUser, conf.SessionId)
 }

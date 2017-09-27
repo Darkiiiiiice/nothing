@@ -93,6 +93,12 @@
 			"revisionTime": "2016-09-30T03:27:40Z"
 		},
 		{
+			"checksumSHA1": "edCum2sU88gm5YW6mtKtghy9YFo=",
+			"path": "github.com/xluohome/phonedata",
+			"revision": "6bbeee49121afcfa61820cf8f691293028bf734b",
+			"revisionTime": "2017-08-03T06:34:39Z"
+		},
+		{
 			"checksumSHA1": "7EZyXN0EmZLgGxZxK01IJua4c8o=",
 			"path": "golang.org/x/net/websocket",
 			"revision": "8351a756f30f1297fe94bbf4b767ec589c6ea6d0",
